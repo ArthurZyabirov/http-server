@@ -1,9 +1,16 @@
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -96,6 +103,10 @@ public class Server {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public List<NameValuePair> getQueryParams(String url) {
+        return URLEncodedUtils.parse(url, StandardCharsets.UTF_8);
+
     }
 }
 
